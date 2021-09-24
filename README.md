@@ -5,7 +5,7 @@ Initializes a ASG along with scale up and scale down policies.
 
 ## Diagram
 
-![Architecture Diagram](assets/vpc.png)
+![Architecture Diagram](assets/asg.png)
 
 ## Requirements
 
