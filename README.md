@@ -3,6 +3,10 @@
 Terraform module which creates Auto Scaling Group (ASG).
 Initializes a ASG along with scale up and scale down policies.
 
+## Diagram
+
+![Architecture Diagram](assets/vpc.png)
+
 ## Requirements
 
 | Name      | Version    |
