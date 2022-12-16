@@ -174,3 +174,10 @@ make plan
 make apply
 
 ```
+
+```
+TODO
+
+- Add functionality to update and add new scaling policies.
+- Implement docker with terraform.
+```
