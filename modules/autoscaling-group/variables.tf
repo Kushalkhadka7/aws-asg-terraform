@@ -1,15 +1,3 @@
-# -----------------.
-# Default variables.
-# -----------------.
-variable "aws_region" {
-  type        = string
-  default     = "us-west-2"
-  description = "Default aws region"
-}
-
-# ----------------------------.
-# Auto scaling group variables.
-# ----------------------------.
 variable "placement_group_name" {
   type        = string
   default     = ""
@@ -36,7 +24,7 @@ variable "aws_asg_name" {
 
 variable "name_space" {
   type        = string
-  default     = ""
+  default     = "dev"
   description = "Workspce tag in which the auto scaling group will be created"
 }
 
@@ -53,7 +41,7 @@ variable "max_size" {
 }
 
 variable "health_check_type" {
-  default     = "EC2"
+  default     = ""
   type        = string
   description = "Health check type for the underlying EC2 instances.(ELB or EC2)"
 }
@@ -79,6 +67,7 @@ variable "enable_force_delete" {
 
 variable "aws_subnets_ids" {
   type        = list(string)
+  default     = []
   description = "List of subnets where we want to launch the aws autoscaling group"
 }
 
@@ -444,7 +433,6 @@ variable "block_device_mappings" {
   default = []
 }
 
-
 variable "instance_market_options" {
   description = "Purchasing options for ec2 instances from market"
 
@@ -467,7 +455,6 @@ variable "network_interfaces_description" {
   default     = ""
   description = "Description for EC2 network interfaces"
 }
-
 
 variable "vpc_id" {
   type        = string

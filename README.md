@@ -48,7 +48,7 @@ module "admin_asg" {
   # launch configurations.
   ec2_image_id           = "ami-04d29b6f966df1537"
   ec2_instance_type      = var.ec2_instance_type
-  ec2_security_groups    = [aws_security_group.ec2_security_group.id]
+  existing_security_group_ids    = [aws_security_group.ec2_security_group.id]
   enable_monitoring      = var.enable_monitoring
   ebs_optimized          = var.ebs_optimized
   ebs_device_name        = var.ebs_device_name
@@ -119,7 +119,7 @@ module "admin_asg" {
 
  "ec2_instance_type"  string
 
- "ec2_security_groups"  list(string)
+ "existing_security_group_ids"  list(string)
 
  "enable_monitoring"  bool
 
