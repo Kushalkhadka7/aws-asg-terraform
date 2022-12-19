@@ -2,5 +2,5 @@
 terraform.tfstate.d
 *.pem
 *.pub
-terraform.tfstate.backup
 .terraform.lock.hcl
+terraform.tfstate.backup
