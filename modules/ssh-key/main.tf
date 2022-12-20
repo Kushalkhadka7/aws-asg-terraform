@@ -10,6 +10,6 @@ resource "aws_key_pair" "this" {
   count = var.generate_new_ssh_key
 
   key_name   = var.key_name
-  public_key = tls_private_key.this
+  public_key = join("", tls_private_key.this.*.public_key_openssh)
 }
 

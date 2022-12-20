@@ -1,5 +1,5 @@
 locals {
-  use_existing_key_pair = var.ssh_key_pair_name == "" ? 0 : 1
+  use_existing_key_pair = var.ssh_key_pair_name != "" ? 1 : 0
   generate_ssh_key_pair = var.ssh_key_pair_name == "" ? 1 : 0
   ssh_key_name          = local.generate_ssh_key_pair > 0 ? module.key_pair_test.generated_ssh_key_name : join("", data.aws_key_pair.this.*.key_name)
 
@@ -58,7 +58,6 @@ resource "aws_security_group_rule" "ingress_self" {
   cidr_blocks       = ["0.0.0.0/0"]
   type              = "ingress"
 }
-
 
 # Creates launch template for the EC2 instances.
 resource "aws_launch_template" "this" {

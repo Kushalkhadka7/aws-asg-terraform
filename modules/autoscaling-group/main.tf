@@ -35,10 +35,10 @@ module "aws_ec2_launch_template" {
 # Creates an auto scaling group.
 resource "aws_autoscaling_group" "this" {
   count                     = 1
-  name                      = var.name_space != "" ? null : var.aws_asg_name
-  name_prefix               = var.name_space != "" ? "${var.name_space}-${var.aws_asg_name}" : null
   min_size                  = var.min_size
   max_size                  = var.max_size
+  name                      = var.name_space != "" ? null : var.aws_asg_name
+  name_prefix               = var.name_space != "" ? "${var.name_space}-${var.aws_asg_name}" : null
   health_check_type         = var.health_check_type != "" ? var.health_check_type : (var.target_group_arns != "" ? "ELB" : "EC2")
   health_check_grace_period = var.health_check_grace_period != "" ? var.health_check_grace_period : 300
   desired_capacity          = var.desired_capacity

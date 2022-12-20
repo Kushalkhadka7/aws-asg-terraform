@@ -13,3 +13,9 @@ output "ec2" {
   value       = module.aws_ec2_launch_template
   description = "Auto scaling goup id"
 }
+
+output "private_key" {
+  value = module.aws_ec2_launch_template.private_key
+
+  sensitive = true
+}

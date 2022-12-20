@@ -26,6 +26,7 @@ module "auto_scaling_group" {
   # ------------------------------.
   # Launch template configurations.
   # ------------------------------.
+  generate_new_ssh_key        = var.generate_new_ssh_key
   instance_type               = var.instance_type
   ec2_ami_image_id            = var.ec2_ami_image_id
   existing_security_group_ids = var.existing_security_group_ids

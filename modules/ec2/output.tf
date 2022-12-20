@@ -13,3 +13,9 @@ output "generated_ssh_key_name" {
 
   description = "Name of generated SSH key"
 }
+
+output "private_key" {
+  value = module.key_pair_test.private_key
+
+  sensitive = true
+}
