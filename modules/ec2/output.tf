@@ -19,3 +19,8 @@ output "private_key" {
 
   sensitive = true
 }
+
+
+output "user_data_info" {
+  value = aws_launch_template.this.user_data
+}

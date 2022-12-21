@@ -19,3 +19,7 @@ output "private_key" {
 
   sensitive = true
 }
+
+output "user_data_info" {
+  value = module.aws_ec2_launch_template.user_data_info
+}

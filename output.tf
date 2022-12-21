@@ -10,3 +10,7 @@ output "private_key" {
 
   sensitive = true
 }
+
+output "user_data_info" {
+  value = module.auto_scaling_group.user_data_info
+}
