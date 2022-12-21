@@ -8,7 +8,8 @@ resource "aws_placement_group" "this" {
 
 # Creates a launch template for the EC2 instances.
 module "aws_ec2_launch_template" {
-  source                               = "../ec2"
+  source = "../ec2"
+
   vpc_id                               = var.vpc_id
   launch_template_id                   = var.launch_template_id
   launch_template_name                 = var.launch_template_name

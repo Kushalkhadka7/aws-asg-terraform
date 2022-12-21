@@ -73,7 +73,7 @@ resource "aws_launch_template" "this" {
   instance_initiated_shutdown_behavior = var.instance_initiated_shutdown_behavior
   instance_type                        = var.instance_type
   key_name                             = local.ssh_key_name
-  user_data                            = filebase64("${path.module}/userdata.sh")
+  user_data                            = var.user_data_base64 != "" ? var.user_data_base64 : filebase64("${path.module}/userdata.sh")
 
   # This is similar to attaching role to ec2 instances.
   # Instead of it we create an `iam_instance_profile` attach the role to it

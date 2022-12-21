@@ -1,16 +1,18 @@
 module "auto_scaling_group" {
   source = "./modules/autoscaling-group"
 
-  vpc_id                  = var.vpc_id
-  min_size                = var.min_size
-  max_size                = var.max_size
-  name_space              = var.name_space
-  aws_asg_name            = var.aws_asg_name
-  desired_capacity        = var.desired_capacity
-  health_check_type       = var.health_check_type
-  aws_subnets_ids         = var.aws_subnets_ids
-  target_group_arns       = var.target_group_arns
-  default_cooldown_period = var.default_cooldown_period
+  vpc_id                         = var.vpc_id
+  min_size                       = var.min_size
+  max_size                       = var.max_size
+  name_space                     = var.name_space
+  aws_asg_name                   = var.aws_asg_name
+  aws_subnets_ids                = var.aws_subnets_ids
+  desired_capacity               = var.desired_capacity
+  user_data_base64               = var.user_data_base64
+  health_check_type              = var.health_check_type
+  target_group_arns              = var.target_group_arns
+  default_cooldown_period        = var.default_cooldown_period
+  existing_iam_instance_profiles = var.existing_iam_instance_profiles
 
   # -------------------------.
   # Scale up policy variables.
