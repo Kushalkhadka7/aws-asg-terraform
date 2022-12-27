@@ -9,23 +9,23 @@ Initializes a ASG along with scale up and scale down policies.
 
 ## Requirements
 
-| Name      | Version    |
-| --------- | ---------- |
-| terraform | >= 0.12.26 |
-| aws       | >= 2.48    |
+| Name      | Version   |
+| --------- | --------- |
+| terraform | >= 1.3.4  |
+| aws       | >= 4.48.0 |
 
 ## Providers
 
-| Name | Version |
-| ---- | ------- |
-| aws  | >= 2.48 |
+| Name | Version   |
+| ---- | --------- |
+| aws  | >= 4.48.0 |
 
-| Phase    | Equivalent `Terraform` Command |
-| -------- | ------------------------------ |
-| Planning | `terraform plan`               |
-| Creation | `terraform apply`              |
-| Update   | `terraform apply`              |
-| Deletion | `terraform destroy`            |
+| Phase    | Equivalent `Terraform` Command                                  |
+| -------- | --------------------------------------------------------------- |
+| Planning | `make terraform-plan` **or** `make docker/terraform-plan`       |
+| Creation | `make terraform-apply` **or** `make docker/terraform-apply`     |
+| Update   | `make terraform-apply` **or** `make docker/terraform-apply`     |
+| Deletion | `make terraform-destroy` **or** `make docker/terraform-destroy` |
 
 ## Usage
 
@@ -158,26 +158,30 @@ module "admin_asg" {
 
 ## Running locally.
 
+Make copy of the `terraform.tfvars.example to terraform.tfvars` file and update the variables.
+
 **Clone the repository.**
 
 ```
 # Initialize terraform.
 
-make init
+make terraform-init
+make docker/terraform-init # using docker
 
 # Show resources to be created.
 
-make plan
+make terraform-plan
+make docker/terraform-plan # using docker
 
 # Create resources.
 
-make apply
+make terraform-apply
+make terraform/terraform-apply # using docker
 
 ```
 
-```
-TODO
+## TODO
 
-- Add functionality to update and add new scaling policies.
-- Implement docker with terraform.
+```
+- Update readme file
 ```
