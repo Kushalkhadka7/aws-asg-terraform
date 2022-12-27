@@ -1,26 +1,24 @@
-output "id" {
+output "launch_template_id" {
   value       = aws_launch_template.this[0].id
-  description = "Auto scaling goup name"
+  description = "Id of the launch template which will be created"
 }
 
-output "ec2" {
+output "launch_template_arn" {
   value       = aws_launch_template.this[0]
-  description = "Auto scaling goup id"
+  description = "Arn of the launch template which will be created"
 }
 
 output "generated_ssh_key_name" {
-  value = module.key_pair_test.generated_ssh_key_name
-
-  description = "Name of generated SSH key"
+  value       = module.key_pair_test.generated_ssh_key_name
+  description = "Name of generated SSH key, which will be used on the launch template instances"
 }
 
-output "private_key" {
-  value = module.key_pair_test.private_key
-
-  sensitive = true
+output "launch_template_security_group_id" {
+  value       = local.should_create_default_sg > 0 ? aws_security_group.default.*.id : var.existing_security_group_ids
+  description = "Id of the security group which will be attached to the ec2 instances"
 }
 
-
-output "user_data_info" {
-  value = aws_launch_template.this.user_data
+output "launch_template_security_group_name" {
+  value       = local.should_create_default_sg > 0 ? join("", aws_security_group.default.*.name) : ""
+  description = "Name of the security group which will be attached to the ec2 instances"
 }

@@ -115,9 +115,9 @@ resource "aws_launch_template" "this" {
   # Tags for the EC2 instances that will be created using this launch template.
   tag_specifications {
     resource_type = "instance"
-    tags = {
+    tags = merge({
       Name = "EC2 instance"
-    }
+    }, var.tags, var.additional_launch_template_tags)
   }
 
   lifecycle {

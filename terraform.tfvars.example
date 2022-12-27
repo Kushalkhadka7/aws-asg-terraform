@@ -1,0 +1,33 @@
+# Default variables
+aws_region = "us-east-1"
+
+# ----------------------------.
+# Auto scaling gorup variables.
+# ----------------------------.
+vpc_id            = "xxxxxxxxxxxx"
+aws_asg_name      = "test-asg"
+name_space        = "dev"
+min_size          = 1
+max_size          = 3
+health_check_type = "ELB"
+desired_capacity  = 2
+aws_subnets_ids   = ["xxxxxxxxxxx", "xxxxxxxx"] # No of subnet ids in which the asg is going to be deployed.
+target_group_arns = ["xxxxxxxx"] # Arn of the target if this asg needs to be attached to the load balancer.
+
+# --------------------------------------.
+# Auto scaling `scale_up` configurations.
+# --------------------------------------.
+scale_up_policy_name = "test_scale_up_policy"
+
+# --------------------------------------.
+# Auto scaling `scale_down` configurations.
+# --------------------------------------.
+scale_down_policy_name = "test_scale_down_policy"
+
+# Launch template configurations.
+generate_new_ssh_key        = 1
+ec2_ami_image_id            = "ami-0ecc74eca1d66d8a6"
+existing_security_group_ids = ["xxxxxxxx", "xxxxxxxxxx"] # No of security grou ids from which the asg will be able to accept connections.
+instance_type               = "t2.micro"
+launch_template_name        = "test-launch-template"
+launch_template_description = "Test launch template"

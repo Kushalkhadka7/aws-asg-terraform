@@ -160,6 +160,17 @@ variable "vpc_id" {
   description = "Current vpc id in which resources will be created"
 }
 
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags that will be attached to the launch template"
+}
+
+variable "additional_launch_template_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags that will be attached to the launch template"
+}
 
 # ---------------------.
 # SSH key pair variables.

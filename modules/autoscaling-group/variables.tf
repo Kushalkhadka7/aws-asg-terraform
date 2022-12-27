@@ -1,3 +1,13 @@
+# Default
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags that will be attached to the launch template"
+}
+
+# ----------------------------.
+# Auto scaling group variables.
+# ----------------------------.
 variable "placement_group_name" {
   type        = string
   default     = ""
@@ -128,6 +138,30 @@ variable "asg_key" {
   type        = string
   default     = "DEFAULT_ASG"
   description = "Asg key to be attached as tag"
+}
+
+
+variable "default_instance_warmup" {
+  type        = number
+  default     = 120
+  description = " Amount of time, in seconds, until a newly launched instance can contribute to the Amazon CloudWatch metrics"
+}
+
+variable "service_linked_role_arn" {
+  type        = string
+  default     = ""
+  description = "ARN of the service-linked role that the ASG will use to call other AWS services"
+}
+
+variable "instance_refresh" {
+  type = object({
+    strategy               = string
+    min_healthy_percentage = number
+    triggers               = list(string)
+  })
+
+  default     = null
+  description = "The instnce_refreh specifications of the instances in auto scaling group"
 }
 
 
@@ -461,6 +495,11 @@ variable "vpc_id" {
   description = "Current vpc id in which resources will be created"
 }
 
+variable "additional_launch_template_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags that will be attached to the launch template"
+}
 
 # ---------------------.
 # SSH key pair variables.
