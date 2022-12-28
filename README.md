@@ -158,30 +158,34 @@ module "admin_asg" {
 
 ## Running locally.
 
-Make copy of the `terraform.tfvars.example to terraform.tfvars` file and update the variables.
+- Make copy of the `terraform.tfvars.example` to `terraform.tfvars` file
+- Update the variables as required.
+- export `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_KEY` on the terminal.
+  ```
+  export AWS_REGION=us-east-1
+  export AWS_ACCESS_KEY_ID= xxxxxxxxxxxxx
+  export AWS_SECRET_KEY= xxxxxxxxxxxxxxx
+  ```
+- Build the docker image locally
+  ```
+  make docker-build
+  ```
+- Run terraform commands
 
-**Clone the repository.**
+  ```
+  # Initialize terraform.
 
-```
-# Initialize terraform.
+  make terraform-init
+  make docker/terraform-init # using docker
 
-make terraform-init
-make docker/terraform-init # using docker
+  # Show resources to be created.
 
-# Show resources to be created.
+  make terraform-plan
+  make docker/terraform-plan # using docker
 
-make terraform-plan
-make docker/terraform-plan # using docker
+  # Create resources.
 
-# Create resources.
+  make terraform-apply
+  make terraform/terraform-apply # using docker
 
-make terraform-apply
-make terraform/terraform-apply # using docker
-
-```
-
-## TODO
-
-```
-- Update readme file
-```
+  ```
